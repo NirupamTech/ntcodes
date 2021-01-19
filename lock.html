@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FILE LOCKS - CODE</title>
+    <link rel="stylesheet" href="fontawesome-5.14.0-web/css/all.css">
+</head>
+<body>
+    <h1>
+        #How to lock a file in Windows 10 | NIRUPAM | #FILES LOCK
+        </h1>
+    <h2>
+    Copy The Code Below :
+    </h2>
+    <div class="container">
+        <div class="content">
+            <textarea readonly="" cols="100" rows="30" style="resize: none;">
+                @ECHO OFF
+if EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" goto UNLOCK
+if NOT EXIST Private goto MDPrivate
+:CONFIRM
+echo Are you sure to lock this folder? (Y/N)
+set/p "cho=>"
+if %cho%==Y goto LOCK
+if %cho%==y goto LOCK
+if %cho%==n goto END
+if %cho%==N goto END
+echo Invalid choice.
+goto CONFIRM
+:LOCK
+ren Private "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+attrib +h +s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+echo Folder locked
+goto End
+:UNLOCK
+echo Enter password to Unlock Your Secure Folder
+set/p "pass=>"
+if NOT %pass%== (TYPE YOUR PASSWORD HERE) goto FAIL
+attrib -h -s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+ren "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" Private
+echo Folder Unlocked successfully
+goto End
+:FAIL
+echo Invalid password
+goto end
+:MDPrivate
+md Private
+echo Private created successfully
+goto End
+:End
+            </textarea>
+        </div>
+    </div>
+<!-- Start of Async Drift Code --> <script> "use strict"; !function() { var t = window.driftt = window.drift = window.driftt || []; if (!t.init) { if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice.")); t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], t.factory = function(e) { return function() { var n = Array.prototype.slice.call(arguments); return n.unshift(e), t.push(n), t; }; }, t.methods.forEach(function(e) { t[e] = t.factory(e); }), t.load = function(t) { var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js"; var i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(o, i); }; } }(); drift.SNIPPET_VERSION = '0.3.1'; drift.load('6bfiexuestas'); </script> <!-- End of Async Drift Code -->
+</body>
+</html>

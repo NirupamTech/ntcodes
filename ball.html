@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOUNCING BALL - CODE</title>
+    <link rel="stylesheet" href="fontawesome-5.14.0-web/css/all.css">
+</head>
+<body>
+    <h1>
+How to make Easy Bouncing Ball in p5.js Web Editor
+        </h1>
+    <h2>
+    Copy The Code Below :
+    </h2>
+    <div class="container">
+        <div class="content">
+            <textarea readonly="" cols="100" rows="30" style="resize: none;">
+                let xpos = 50;
+let ypos = 50;
+let dx = 5;
+let dy = 3;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(0);
+  ellipse(xpos,ypos,30,30);
+  if (xpos>=width-20 || xpos==20)
+  {
+    dx = -dx;
+  }
+  
+  if (ypos>=height-20 || ypos==20)
+  {
+    dy = -dy;
+  }
+  
+  xpos = xpos +dx;
+  ypos = ypos +dy;
+}
+            </textarea>
+        </div>
+    </div>
+<!-- Start of Async Drift Code --> <script> "use strict"; !function() { var t = window.driftt = window.drift = window.driftt || []; if (!t.init) { if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice.")); t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], t.factory = function(e) { return function() { var n = Array.prototype.slice.call(arguments); return n.unshift(e), t.push(n), t; }; }, t.methods.forEach(function(e) { t[e] = t.factory(e); }), t.load = function(t) { var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js"; var i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(o, i); }; } }(); drift.SNIPPET_VERSION = '0.3.1'; drift.load('6bfiexuestas'); </script> <!-- End of Async Drift Code -->
+</body>
+</html>

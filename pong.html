@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PONG GAME - CODE</title>
+    <link rel="stylesheet" href="fontawesome-5.14.0-web/css/all.css">
+</head>
+<body>
+    <h1>#How to make Complete Pong Game in studio.code.org | NIRUPAM | #NIRUPAM |</h1>
+    <h2>
+    Copy The Code Below :
+    </h2>
+    <div class="container">
+        <div class="content">
+            <textarea readonly="" cols="100" rows="30" style="resize: none;">
+                //setup edge sprites
+                createEdgeSprites();
+                
+                //create a user paddle sprite
+                var userPaddle = createSprite(390,200,10,70);
+                
+                //create a computer paddle sprite
+                var computerPaddle = createSprite(10,200,10,70);
+                
+                //create the pong ball
+                var ball = createSprite(200,200,12,12);
+                
+                var computerScore = 0;
+                var playerScore = 0;
+                var gameState = "serve";
+                
+                function draw() {
+                  //fill the computer screen with white color
+                  background("white");
+                  
+                  //display Scores
+                  text(computerScore,170,20);
+                  text(playerScore, 230,20);
+                  
+                  //draw dotted lines
+                  for (var i = 0; i < 400; i+=20) {
+                     line(200,i,200,i+10);
+                  }
+                  
+                  if (gameState === "serve") {
+                    text("Press Space to Serve",150,180);
+                  } 
+                  
+                  if (gameState === "over") {
+                    text("Game Over!",170,160);
+                    text("Refresh the page to play the game again",100,180);
+                  }
+                  
+                 
+                  
+                  
+                  //give velocity to the ball when the user presses play
+                  //assign random velocities later for fun
+                  if (keyDown("space") && gameState == "serve") {
+                    ball.velocityX = 5;
+                    ball.velocityY = 5;
+                    gameState = "play";
+                  }
+                  
+                  //make the userPaddle move with the mouse
+                  userPaddle.y = World.mouseY;
+                  
+                  
+                  
+                  //make the ball bounce off the user paddle
+                  if(ball.isTouching(userPaddle)){
+                    playSound("hit.mp3");
+                    ball.x = ball.x - 5;
+                    ball.velocityX = -ball.velocityX;
+                  }
+                  
+                  //make the ball bounce off the computer paddle
+                  if(ball.isTouching(computerPaddle)){
+                    
+                    ball.x = ball.x + 5;
+                    ball.velocityX = -ball.velocityX;
+                  }
+                  
+                  //place the ball back in the centre if it crosses the screen
+                  if(ball.x > 400 || ball.x < 0){
+                    if (ball.x < 0) {
+                      playerScore++;
+                    }
+                    else {
+                      computerScore++;
+                    }
+                      
+                    ball.x = 200;
+                    ball.y = 200;
+                    ball.velocityX = 0;
+                    ball.velocityY = 0;
+                    gameState = "serve";
+                    
+                    if (computerScore=== 5 || playerScore === 5){
+                      gameState = "over";
+                    }
+                  }
+                  
+                  //make the ball bounce off the top and bottom walls
+                  if (ball.isTouching(topEdge) || ball.isTouching(bottomEdge)) {
+                    ball.bounceOff(topEdge);
+                    ball.bounceOff(bottomEdge);
+                  }
+                  
+                  //add AI to the computer paddle so that it always hits the ball
+                  computerPaddle.y = ball.y;
+                  drawSprites();
+                }
+            </textarea>
+        </div>
+    </div>
+<!-- Start of Async Drift Code --> <script> "use strict"; !function() { var t = window.driftt = window.drift = window.driftt || []; if (!t.init) { if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice.")); t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], t.factory = function(e) { return function() { var n = Array.prototype.slice.call(arguments); return n.unshift(e), t.push(n), t; }; }, t.methods.forEach(function(e) { t[e] = t.factory(e); }), t.load = function(t) { var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script"); o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js"; var i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(o, i); }; } }(); drift.SNIPPET_VERSION = '0.3.1'; drift.load('6bfiexuestas'); </script> <!-- End of Async Drift Code -->
+</body>
+</html>
